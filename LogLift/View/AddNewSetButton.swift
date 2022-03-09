@@ -29,10 +29,3 @@ struct AddNewSetButton: View {
     }
 }
 
-//struct AddNewSetButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddNewSetButton(proxy: GeometryProxy().size, workout: .exampleWorkout) {
-//            
-//        }
-//    }
-//}
