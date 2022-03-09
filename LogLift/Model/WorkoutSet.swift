@@ -30,7 +30,7 @@ extension WorkoutSet {
         WorkoutSet(weight: Kg.random(in: 0...100), reps: Int.random(in: 0...10))
     }
     
-    var  cleanWeightStr: String {
+    var cleanWeightStr: String {
         weight.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", weight) : String(format: "%.01f", weight)
     }
     
