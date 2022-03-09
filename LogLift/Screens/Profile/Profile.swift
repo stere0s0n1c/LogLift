@@ -70,7 +70,7 @@ struct Profile: View {
                 
                 LogoutButton {
                     stepper = .onboarding
-                    personService.isAuth = false
+                    personService.isUserAuthorized = false
                 }
                 
             }

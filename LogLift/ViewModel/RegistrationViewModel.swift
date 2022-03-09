@@ -37,7 +37,7 @@ final class RegistrationViewModel: ObservableObject {
         currentPerson.wrappedValue = newPerson
         stepper.wrappedValue = .authorized(newPerson.id.description)
         personService.authPersonId = newPerson.id.description
-        personService.isAuth = true
+        personService.isUserAuthorized = true
     }
     
     func cancel(stepper: Binding<CurrentScreenState>) {

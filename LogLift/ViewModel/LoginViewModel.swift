@@ -50,7 +50,7 @@ final class LoginViewModel: ObservableObject {
                     stepper.wrappedValue = .authorized(existingPerson.id.description)
                     currentPerson.wrappedValue =  existingPerson
                     strongSelf.personService.authPersonId = existingPerson.id.description
-                    strongSelf.personService.isAuth = true
+                    strongSelf.personService.isUserAuthorized = true
                 }
             } else {
                 strongSelf.hint = "User doesn't exist"

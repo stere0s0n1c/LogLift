@@ -21,7 +21,7 @@ class CurrentScreenViewModel: ObservableObject {
     @ObservedObject var personService = PersonViewModel()
     
     init() {
-        if personService.isAuth {
+        if personService.isUserAuthorized {
             self.state = .authorized(personService.authPersonId)
         } else {
             self.state = .onboarding

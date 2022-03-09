@@ -14,7 +14,7 @@ typealias PersonIdStr = String
 final class PersonViewModel: ObservableObject {
     
     @AppStorage("authorizedPersonId") var authPersonId: PersonIdStr = ""
-    @AppStorage("isAuth") var isAuth: Bool = false
+    @AppStorage("isUserAuthorized") var isUserAuthorized: Bool = false
     @AppStorage("users") var users = Persons()
     @Published var currentPerson: Person = Person(id: UUID(), name: "publisher", login: "stronger", password: "1234", workouts: [])
     
