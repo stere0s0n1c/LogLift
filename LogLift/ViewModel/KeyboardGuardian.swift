@@ -60,7 +60,7 @@ final class KeyboardGuardian: ObservableObject {
         updateSlide()
     }
     
-    func updateSlide() {
+    private func updateSlide() {
         if keyboardIsHidden {
             slide = 0
         } else {
