@@ -39,17 +39,20 @@ extension Workout {
     }
     
     var maxWeightOfWorkout: (weight: Kg, reps: Int) {
-        guard let set = sets.sorted(by: { $0.weight > $1.weight }).first else { return (0, 0) }
+        let set = sets.reduce(WorkoutSet(weight: 0, reps: 0), { partialResult, workoutSet in
+            workoutSet.weight > partialResult.weight ? workoutSet : partialResult
+        })
         return (set.weight, set.reps)
     }
 }
 
 extension Workouts {
     func getBestTypeWorkout(for type: ExerciseType) -> Workout? {
-        guard let workout = self.filter({ $0.type == type}).sorted(by: { $0.maxWeightOfWorkout.weight > $1.maxWeightOfWorkout.weight}).first else { return nil }
-        var workoutPrep = workout
-        let bestSet = workoutPrep.sets.filter({ $0.weight == workoutPrep.maxWeightOfWorkout.weight})
-        workoutPrep.sets = bestSet
-        return workoutPrep
+        var workout = self.reduce(Workout(id: UUID(), date: Date.now, type: type, sets: [WorkoutSet(weight: 0, reps: 0)]), { partialResult, workout in
+            guard workout.type == type else { return partialResult }
+            return workout.maxWeightOfWorkout > partialResult.maxWeightOfWorkout ? workout : partialResult
+        })
+        workout.sets = workout.sets.filter({ $0.weight == workout.maxWeightOfWorkout.weight})
+        return workout
     }
 }
